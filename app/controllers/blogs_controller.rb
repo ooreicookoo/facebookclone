@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:snow, :edit, :update]
+  before_action :set_blog, only: [:snow, :edit, :update, :destroy]
   def index
     @blogs = Blog.all
   end
@@ -24,6 +24,10 @@ class BlogsController < ApplicationController
     else
       render :edit
     end
+  end
+  def destroy
+    @blog.destroy
+    redirect_to blogs_path, notice:"投稿を削除しました！"
   end
   private
   def blog_params
