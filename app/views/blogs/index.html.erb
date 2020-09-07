@@ -1,11 +1,15 @@
 <h1>ブログ一覧</h1>
 <table>
   <tr>
+    <th>タイトル</th>
     <th>内容</th>
   </tr>
-  <%= @blogs.each do |blog| %>
+<% @blogs.each do |blog| %>
   <tr>
+    <td><%= blog.title %></td>
     <td><%= blog.content %></td>
+    <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
   </tr>
 <% end %>
 </table>
+<%= link_to '新しくブログを投稿する', new_blog_path %>
