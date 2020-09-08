@@ -1,0 +1,6 @@
+<h3>以下の内容で送信する。</h3>
+<%= form_with(model: @blog, local: true) do |form| %>
+  <%= form.hidden_field :content %>
+  <p>本文:<%= @blog.content %></p>
+  <%= form.submit "登録する" %>
+<% end %> 
