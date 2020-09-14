@@ -41,6 +41,9 @@ gem 'bcrypt', '3.1.11'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'carrierwave'
   gem 'mini_magick'
 end
