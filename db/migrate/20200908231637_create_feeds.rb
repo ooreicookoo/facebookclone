@@ -3,6 +3,7 @@ class CreateFeeds < ActiveRecord::Migration[5.2]
     create_table :feeds do |t|
       t.text :image
       t.timestamps
+      t.references :user, foreign_key: true
     end
   end
 end
