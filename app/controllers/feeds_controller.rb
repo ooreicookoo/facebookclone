@@ -7,15 +7,15 @@ class FeedsController < ApplicationController
   end
   def new
     if params[:back]
-      @feed = Feed.new(feed_params)
+      @feed = current_user.feeds.build(feed_params)
     else
-      @feed = Feed.new
+      @feed = current_user.feeds.build
     end
   end
   def edit
   end
   def create
-    @feed = Feed.new(feed_params)
+    @feed = current_user.feeds.build(feed_params)
     respond_to do |format|
       if @feed.save
         format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
@@ -45,7 +45,7 @@ class FeedsController < ApplicationController
     end
   end
   def confirm
-    @feed = Feed.new(feed_params)
+    @feed = current_user.feeds.build(feed_params)
   end
   private
     def set_feed
