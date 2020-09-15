@@ -4,8 +4,10 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.all
   end
+
   def show
   end
+
   def new
     if params[:back]
       @feed = current_user.feeds.build(feed_params)
@@ -13,20 +15,32 @@ class FeedsController < ApplicationController
       @feed = current_user.feeds.build
     end
   end
+
   def edit
   end
+
   def create
-    @feed = current_user.feeds.build(feed_params)
-    respond_to do |format|
-      if @feed.save
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
-        format.json { render :show, status: :created, location: @feed }
-      else
-        format.html { render :new }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
-      end
+    @feed = current_user.feeds.new(feed_params)
+    if @feed.save
+      redirect_to feeds_path, notice: '投稿に成功しました'
+    else
+      flash.now[:denger] = '投稿に失敗しました'
+      render :new
     end
   end
+  # def create
+  #   @feed = current_user.feeds.build(feed_params)
+  #   respond_to do |format|
+  #     if @feed.save
+  #       format.html { redirect_to @feed, notice: '投稿に成功しました' }
+  #       format.json { render :show, status: :created, location: @feed }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @feed.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
   def update
     respond_to do |format|
       if @feed.update(feed_params)
@@ -53,6 +67,6 @@ class FeedsController < ApplicationController
       @feed = Feed.find(params[:id])
     end
     def feed_params
-      params.require(:feed).permit(:image, :image_cache)
+      params.require(:feed).permit(:content, :image, :image_cache)
     end
 end
