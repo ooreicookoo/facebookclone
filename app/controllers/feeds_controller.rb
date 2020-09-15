@@ -1,5 +1,6 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_with_http_digest, only: [:new, :confirm, :create, :edit, :update, :destroy]
   def index
     @feeds = Feed.all
   end

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :authenticate_with_http_digest, only: [:destroy]
   def new
   end
   def create
@@ -11,6 +12,7 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
   def destroy
     session.delete(:user_id)
     flash[:notice] = 'ログアウトしました'

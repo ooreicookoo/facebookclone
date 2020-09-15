@@ -1,0 +1,16 @@
+<h1>つぶやき一覧</h1>
+<p><%= notice %></p>
+   <table>
+     <tr>
+       <th>つぶやき</th>
+     </tr>
+<% @apps.each do |app| %>
+  <tr>
+    <td><%= app.content %></td>
+    <td><%= link_to '詳細を確認する', app_path(app.id) %></td>
+    <td><%= link_to "つぶやきを編集する", edit_app_path(app.id) %></td>
+    <td><%= link_to "つぶやきを削除する", app_path(app.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to '新しくつぶやく', new_app_path %>
