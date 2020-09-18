@@ -1,72 +1,70 @@
 class FeedsController < ApplicationController
-  before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_action :select_feed, only: [:show, :update, :destroy]
   before_action :authenticate_with_http_digest, only: [:new, :confirm, :create, :edit, :update, :destroy]
-  def index
+
+  def top
     @feeds = Feed.all
+    if logged_in?
+      @user = User.find(current_user.id)
+    else
+      @user = User.new
+    end
   end
 
   def show
   end
 
   def new
-    if params[:back]
-      @feed = current_user.feeds.build(feed_params)
+    @feed = current_user.feeds.new
+  end
+
+  def confirm
+    @feed = current_user.feeds.build(feed_params)
+    # binding.pry
+    if @feed.invalid?
+      flash.now[:danger] = 'エラー！内容が未記入です'
+      render :new
+    end
+  end
+
+  def create
+    @feed = current_user.feeds.build(feed_params)
+    if @feed.save
+      redirect_to user_path(current_user.id)
     else
-      @feed = current_user.feeds.build
+      flash.now[:denger] = '投稿に失敗しました。内容が未記入です'
+      render :new
     end
   end
 
   def edit
   end
 
-  def create
-    @feed = current_user.feeds.new(feed_params)
-    if @feed.save
-      redirect_to feeds_path, notice: '投稿に成功しました'
-    else
-      flash.now[:denger] = '投稿に失敗しました'
-      render :new
-    end
-  end
-  # def create
-  #   @feed = current_user.feeds.build(feed_params)
-  #   respond_to do |format|
-  #     if @feed.save
-  #       format.html { redirect_to @feed, notice: '投稿に成功しました' }
-  #       format.json { render :show, status: :created, location: @feed }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @feed.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
   def update
     respond_to do |format|
       if @feed.update(feed_params)
-        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
-        format.json { render :show, status: :ok, location: @feed }
+        redirect_to user_path(current_user.id)
       else
-        format.html { render :edit }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
+        flash.now[:danger] = 'エラーがあります'
+        render :edit
       end
     end
   end
+
   def destroy
     @feed.destroy
-    respond_to do |format|
-      format.html { redirect_to feeds_url, notice: 'Feed was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = '投稿を消去しました'
+    redirect_to user_path(current_user.id)
   end
-  def confirm
-    @feed = current_user.feeds.build(feed_params)
-  end
+
+
   private
-    def set_feed
+    def select_feed
       @feed = Feed.find(params[:id])
     end
+
     def feed_params
-      params.require(:feed).permit(:content, :image, :image_cache)
+      params.require(:feed).permit(:image, :image_cache)
     end
 end

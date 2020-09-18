@@ -1,11 +1,20 @@
-<%= form_with(model: feed, local: true, url:confirm_feeds_path) do |form| %>
-  <div class="field">
-    <%= form.label :image %>
-    <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
-    <%= form.file_field :image %>
-    <%= form.hidden_field :image_cache %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
+<%= form_with(model: @feed, local:true, url: confirm_feeds_path) do |f| %>
+  <div class="main container">
+    <div class="form-group">
+      <%= f.label :content, 'コメント', class: "" %>
+      <%= f.text_area :content, placeholder: '今何してる？', class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, '写真を選択', class: "control-label" %>
+      <div class="custom-file">
+        <%= f.file_field :image, class: "form-control file custom-file-input" %>
+        <label class="custom-file-label" for="inputFile" data-browse="参照" >ファイルを選択(ここにドロップすることもできます)</label>
+        <%= f.hidden_field :image_cache %>
+      </div>
+    </div>
+    <div class="submit">
+      <%= link_to 'マイページに戻る', feeds_path %>
+      <%= f.submit '投稿', class: "" %>
+    </div>
   </div>
 <% end %>
