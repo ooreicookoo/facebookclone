@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>この内容で投稿しますか？</h2>
+  <div class="form">
+    <%= form_with(model: @feed, local: true, url: confirm_new_or_edit, method: confirm_form_method) do |f| %>
+      <div class="form-group">
+        <%= f.hidden_field :content %>
+        <%= f.hidden_field :image_cache %>
+        <%= f.label :content, 'コメント:', class: "control-label" %>
+        <p><%= @feed.content %></p>
+      </div>
+      <div class="form-group">
+        <%= f.label :image, '写真:', class: "control-label" %>
+        <%= image_tag @feed.image.url if @feed.image?%>
+      </div>
+      <div class="sign_up_btn">
+        <%= f.submit '投稿', class: "btn btn-outline-info" %>
+      </div>
+    <% end %>
+  </div>
+</div>

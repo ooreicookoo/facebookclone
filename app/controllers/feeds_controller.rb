@@ -20,7 +20,6 @@ class FeedsController < ApplicationController
 
   def confirm
     @feed = current_user.feeds.build(feed_params)
-    # binding.pry
     if @feed.invalid?
       flash.now[:danger] = 'エラー！内容が未記入です'
       render :new
@@ -65,6 +64,6 @@ class FeedsController < ApplicationController
     end
 
     def feed_params
-      params.require(:feed).permit(:image, :image_cache)
+      params.require(:feed).permit(:image, :image_cache, :content)
     end
 end
