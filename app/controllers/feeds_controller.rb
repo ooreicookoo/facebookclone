@@ -1,5 +1,5 @@
 class FeedsController < ApplicationController
-  before_action :select_feed, only: [:show, :update, :destroy]
+  before_action :select_feed, only: [:show, :update, :destroy, :edit]
   before_action :authenticate_with_http_digest, only: [:new, :confirm, :create, :edit, :update, :destroy]
 
   def index
@@ -42,7 +42,7 @@ class FeedsController < ApplicationController
 
   def update
       if @feed.update(feed_params)
-        redirect_to fedds_path, notice: "投稿を編集しました！"
+        redirect_to feeds_path, notice: "投稿を編集しました！"
       else
         flash.now[:danger] = 'エラーがあります'
         render :edit
@@ -51,8 +51,7 @@ class FeedsController < ApplicationController
 
   def destroy
     @feed.destroy
-    flash[:notice] = '投稿を消去しました'
-    redirect_to user_path(current_user.id)
+    redirect_to feeds_path, notice:"投稿を削除しました！"
   end
 
 

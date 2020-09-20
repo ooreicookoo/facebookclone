@@ -5,6 +5,8 @@
         <%= link_to feed.user.name, user_path(feed.user.id) %>
       </div>
         <%= link_to '詳細を確認する', feed_path(feed.id) %>
+        <%= link_to "投稿を編集する", edit_feed_path(feed.id), data: { confirm: '本当に編集しますか？' } %>
+        <%= link_to '投稿を削除する', feed, method: :delete, data: { confirm: '本当に削除しますか？?' } %>
       <div class="card-body">
         <h3>投稿内容</h3>
         <p class="card-text"><%= feed.content %></p>
