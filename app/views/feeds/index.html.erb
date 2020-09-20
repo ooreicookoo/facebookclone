@@ -1,19 +1,16 @@
 <% if logged_in? %>
-<% @feed.order(created_at: :desc).limit(15).each do |feed| %>
+<% @feeds.order(created_at: :desc).limit(15).each do |feed| %>
 <div class="card border-dark mb-3" style="max-width: 30rem;">
       <div class="card-header">
-        <% if @user.icon_image? %>
-          <%= image_tag @user.icon_image.mini_icon.url, class: "icon" %>
-        <% else %>
-          <%= image_tag "default_icon.jpg", size: '40x40', class: "icon" %>
-        <% end %>
-        <%= link_to picture.user.name, user_path(feed.user.id) %>
+        <%= link_to feed.user.name, user_path(feed.user.id) %>
       </div>
+        <%= link_to '詳細を確認する', feed_path(feed.id) %>
       <div class="card-body">
+        <h3>投稿内容</h3>
         <p class="card-text"><%= feed.content %></p>
         <div class="post_content border-bottom">
           <% if feed.image? %>
-            <%= image_tag picture.image.url, class: "post_img" %>
+            <%= image_tag feed.image.url, class: "post_img" %>
           <% end %>
         </div>
       </div>

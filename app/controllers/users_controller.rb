@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def apdate
+  def update
     if @user.update(user_params)
       redirect_to user_path(@user.id)
     else
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password,:password_confirmation)
+    params.require(:user).permit(:name, :email, :password,:password_confirmation, :self_introduction, :icon_image)
   end
 
   def set_user

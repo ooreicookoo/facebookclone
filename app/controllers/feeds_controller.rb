@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
   before_action :select_feed, only: [:show, :update, :destroy]
   before_action :authenticate_with_http_digest, only: [:new, :confirm, :create, :edit, :update, :destroy]
 
-  def top
+  def index
     @feeds = Feed.all
     if logged_in?
       @user = User.find(current_user.id)
@@ -29,7 +29,7 @@ class FeedsController < ApplicationController
   def create
     @feed = current_user.feeds.build(feed_params)
     if @feed.save
-      redirect_to user_path(current_user.id)
+      redirect_to feeds_path, notice: "投稿が完了しました"
     else
       flash.now[:denger] = '投稿に失敗しました。内容が未記入です'
       render :new
@@ -41,15 +41,13 @@ class FeedsController < ApplicationController
 
 
   def update
-    respond_to do |format|
       if @feed.update(feed_params)
-        redirect_to user_path(current_user.id)
+        redirect_to fedds_path, notice: "投稿を編集しました！"
       else
         flash.now[:danger] = 'エラーがあります'
         render :edit
       end
     end
-  end
 
   def destroy
     @feed.destroy

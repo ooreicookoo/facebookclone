@@ -9,6 +9,9 @@
               <%= image_tag @user.icon_image.icon.url, class: "bigicon" %>
               <%= image_tag "default_icon.jpg", size: '150x150', class: "bigicon" %>
             <% end %>
+          <div class="username">
+            <p><%= @user.name %></p>
+          </div>
         <div class="pageheader-right">
           <% if @user.id == current_user.id %>
             <span class="inline-link link-btn" data-mfp-src="#inline-popup">ユーザー編集</span>
