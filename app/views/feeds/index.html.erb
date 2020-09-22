@@ -1,3 +1,5 @@
+ <h1>投稿一覧</h1>
+<p><%= notice %></p>
 <% if logged_in? %>
 <% @feeds.order(created_at: :desc).limit(15).each do |feed| %>
 <div class="card border-dark mb-3" style="max-width: 30rem;">
