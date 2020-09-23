@@ -1,14 +1,16 @@
+<%= link_to '新規投稿', '/feeds/new'%>
  <h1>投稿一覧</h1>
-<p><%= notice %></p>
 <% if logged_in? %>
 <% @feeds.order(created_at: :desc).limit(15).each do |feed| %>
 <div class="card border-dark mb-3" style="max-width: 30rem;">
       <div class="card-header">
         <%= link_to feed.user.name, user_path(feed.user.id) %>
       </div>
-        <%= link_to '詳細を確認する', feed_path(feed.id) %>
-        <%= link_to "投稿を編集する", edit_feed_path(feed.id), data: { confirm: '本当に編集しますか？' } %>
-        <%= link_to '投稿を削除する', feed, method: :delete, data: { confirm: '本当に削除しますか？?' } %>
+      <tr>
+        <td><%= link_to '詳細を確認する', feed_path(feed.id) %></td>
+        <td><%= link_to "投稿を編集する", edit_feed_path(feed.id), data: { confirm: '本当に編集しますか？' } %></td>
+        <td><%= link_to '投稿を削除する', feed, method: :delete, data: { confirm: '本当に削除しますか？?' } %></td>
+      </tr>
       <div class="card-body">
         <h3>投稿内容</h3>
         <p class="card-text"><%= feed.content %></p>

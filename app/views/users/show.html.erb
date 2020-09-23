@@ -1,55 +1,11 @@
-<h1><%= @user.name %>のページ</h1>
-<p>メールアドレス：<%= @user.email %></p>
-<div class="container pageheader">
+<br>
+<div class="container" id="main_layout">
   <div class="row">
-    <div class="col-md-12">
-      <div class="pageheader-content">
-        <div class="pageheader-left">
-          <div class="usericon">
-              <%= image_tag @user.icon_image.icon.url, class: "bigicon" %>
-              <%= image_tag "default_icon.jpg", size: '150x150', class: "bigicon" %>
-            <% end %>
-          <div class="username">
-            <p><%= @user.name %></p>
-          </div>
-        <div class="pageheader-right">
-          <% if @user.id == current_user.id %>
-            <span class="inline-link link-btn" data-mfp-src="#inline-popup">ユーザー編集</span>
-            <div id="inline-popup" class="mfp-hide">
-              <%= render template: "users/edit" %>
-              <div class="mfp-close"></div>
-            </div>
-            <%= link_to 'ログアウト', session_path(@user.id), class: 'link-btn',
-                method: :delete, data: { confirm: 'ログアウトしてよろしいですか？'} %>
-          <% end %>
-        </div>
-      </div>
+    <div class="col-md-3 col-md-offset-4">
+      <h3><u><%= @user.name %></u></h3>
+      <p>Email: <%= @user.email %></p>
+      <%= link_to '新規投稿', '/feeds/new'%>
+      <%= link_to '一覧ページ', '/feeds/'%>
     </div>
   </div>
 </div>
-<%= render template: "feeds/new" if @user.id == current_user.id %>
-<% @user.feeds.order(created_at: :desc).each do |feed| %>
-  <div class="card border-dark mb-3" style="max-width: 30rem;">
-    <div class="card-header">
-      <% if @user.icon_image? %>
-        <%= image_tag @feed.icon_image.mini_icon.url, class: "icon" %>
-      <% else %>
-        <%= image_tag "default_icon.jpg", size: '40x40', class: "icon" %>
-      <% end %>
-      <%= link_to feed.user.name, user_path(feed.user.id) %>
-    </div>
-    <div class="card-body">
-      <p class="card-text"><%= feed.content %></p>
-      <div class="post_content border-bottom">
-        <% if feed.image? %>
-          <%= image_tag feed.image.url, class: "post_img" %>
-        <% end %>
-      </div>
-      <% if feed.user_id == current_user.id %>
-        <%= link_to '編集', edit_feed_path(feed.id), class: "card-link" %>
-        <%= link_to '削除', feed_path(feed.id), class: "card-link",  method: :delete, data: {confirm: '本当に削除してもよろしいですか？'} %>
-      <% end %>
-    </div>
-  </div>
-  </div>
-    </div>

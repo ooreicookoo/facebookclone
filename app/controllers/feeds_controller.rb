@@ -57,7 +57,6 @@ class FeedsController < ApplicationController
 
   private
     def select_feed
-          # binding.pry
       @feed = Feed.find(params[:id])
     end
 
