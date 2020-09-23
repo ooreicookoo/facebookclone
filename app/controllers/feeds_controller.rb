@@ -39,7 +39,6 @@ class FeedsController < ApplicationController
   def edit
   end
 
-
   def update
       if @feed.update(feed_params)
         redirect_to feeds_path, notice: "投稿を編集しました！"
@@ -54,13 +53,12 @@ class FeedsController < ApplicationController
     redirect_to feeds_path, notice:"投稿を削除しました！"
   end
 
-
   private
-    def select_feed
-      @feed = Feed.find(params[:id])
-    end
+  def select_feed
+    @feed = Feed.find(params[:id])
+  end
 
-    def feed_params
-      params.require(:feed).permit(:image, :image_cache, :content)
-    end
+  def feed_params
+    params.require(:feed).permit(:image, :image_cache, :content)
+  end
 end
