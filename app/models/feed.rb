@@ -1,7 +1,8 @@
 class Feed < ApplicationRecord
   mount_uploader :image, ImageUploader
   belongs_to :user
-  validates :image_or_content, presence: true
+  validates :image, presence: true
+  validates :content, presence: true
 
   private
   def image_or_content
