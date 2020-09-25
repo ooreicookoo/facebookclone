@@ -1,27 +1,21 @@
-<%= link_to '新規投稿', '/feeds/new'%>
- <h1>投稿一覧</h1>
-<% if logged_in? %>
-<% @feeds.order(created_at: :desc).limit(15).each do |feed| %>
-<div class="card border-dark mb-3" style="max-width: 30rem;">
-      <div class="card-header">
-        <%= link_to feed.user.name, user_path(feed.user.id) %>
-      </div>
-      <tr>
-        <td><%= link_to '詳細を確認する', feed_path(feed.id) %></td>
-        <td><%= link_to "投稿を編集する", edit_feed_path(feed.id), data: { confirm: '本当に編集しますか？' } %></td>
-        <td><%= link_to '投稿を削除する', feed, method: :delete, data: { confirm: '本当に削除しますか？?' } %></td>
-      </tr>
-      <div class="card-body">
-        <h3>投稿内容</h3>
-        <p class="card-text"><%= feed.content %></p>
-        <div class="post_content border-bottom">
-          <% if feed.image? %>
-            <%= image_tag feed.image.url, class: "post_img" %>
-          <% end %>
-        </div>
-      </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+        <span class="sr-only">Bootstrap</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bootstrap
+      </a>
     </div>
-  <% end %>
-<% else %>
-  <%= render template: "users/new" %>
-<% end %>
+    <div id="gnavi" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="">top</a></li>
+        <li><a href="">menu1</a></li>
+        <li><a href="">menu2</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
