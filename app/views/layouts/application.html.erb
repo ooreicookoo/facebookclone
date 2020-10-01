@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login</title>
+    <title>fictive book</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-      <header>
-          <a href=#><img class="mb-4" src="/assets/fictive.png" alt="" width="200" height="189">
-      </header>
+    <a href="/feeds"><img class="mb-4" src="/assets/fb0929.jpg" alt="" width="200" height="70"></a>
   <body>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
     <% if logged_in? %>
+    　　<div class="wrapper">
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="/feeds">fictive book</a>
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+                <span class="sr-only">fictive book</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">fictive book</a>
             </div>
             <div id="gnavi" class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
@@ -36,6 +41,7 @@
     <%= link_to "Login", new_session_path %>
     <% end %>
     <%= yield %>
+    </div>
     <footer>
       <p>© 2020 R.enomoto</p>
     </footer>

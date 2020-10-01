@@ -1,3 +1,57 @@
-// Place all the styles related to the feeds controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+
+.navbar-default {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+}
+
+header {
+  width: 100%;
+  background-color: #2c3e50;
+  height: 54px;
+  margin: 0
+}
+header ul {
+  margin: 0 auto;
+  list-style: none;
+}
+header ul a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: white;
+}
+header li {
+  float: left;
+  width: auto;
+}
+header ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.wrapper{
+    min-height: 80vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 58px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+footer {
+  width: 100%;
+  background-color:#1877F2;
+  padding: 20px 0 10px 0;
+  color: white;
+  margin: auto;
+  padding-bottom: 10px;
+  font-size: 12px;
+  position: relative;
+  bottom: 0;
+  text-align: center;
+}
