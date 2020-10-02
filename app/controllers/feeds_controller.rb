@@ -1,5 +1,5 @@
 class FeedsController < ApplicationController
-  before_action :select_feed, only: [:show, :update, :destroy, :edit]
+  before_action :select_feed, only: [:show, :update, :destroy]
   before_action :authenticate_with_http_digest, only: [:new, :confirm, :create, :edit, :update, :destroy]
 
   def index
@@ -15,7 +15,7 @@ class FeedsController < ApplicationController
   end
 
   def new
-    @feed = current_user.feeds.new
+    @feed = current_user.feeds.build
   end
 
   def confirm

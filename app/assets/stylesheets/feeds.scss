@@ -5,9 +5,8 @@
   border: 1px solid transparent;
 }
 
-.navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+nav.navbar navbar-default navbar-fixed-top {
+  background-color: #1877F2;
 }
 
 header {
@@ -34,24 +33,4 @@ header ul:after {
   content: "";
   display: block;
   clear: both;
-}
-
-.wrapper{
-    min-height: 80vh;
-    position: relative;/*←相対位置*/
-    padding-bottom: 58px;/*←footerの高さ*/
-    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
-}
-
-footer {
-  width: 100%;
-  background-color:#1877F2;
-  padding: 20px 0 10px 0;
-  color: white;
-  margin: auto;
-  padding-bottom: 10px;
-  font-size: 12px;
-  position: relative;
-  bottom: 0;
-  text-align: center;
 }
