@@ -27,7 +27,7 @@
  nav.navbar navbar-default navbar-fixed-top {
    background-color: #1877F2;
  }
- 
+
  #body-inside {
    width: 100%;
    position:relative;
@@ -36,17 +36,13 @@
 image.mb-4 {
   padding-bottom: 10px;
 }
- .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #1877F2;
+
+footer.footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
-.footer p {
+footer.footer p {
   text-align: center;
-  margin-top: 20px;
-  color: white;
+  padding-top: 50px;
 }

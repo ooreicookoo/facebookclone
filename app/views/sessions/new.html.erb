@@ -2,13 +2,13 @@
   <h2>Log in</h2>
     <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
   <div class="form-group">
-    <%= f.label :email, class: "sr-only" %>
+    <%= f.label :content, 'メールアドレス', class: "control-label" %>
     <%= f.email_field :email, class: "form-control" %>
-    <%= f.label :password, class: "sr-only"%>
+    <%= f.label :password, 'パスワード', class: "control-label"%>
     <%= f.password_field :password, class: "form-control" %>
   </div>
   <div class="submit">
-    <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
+    <%= f.submit "Log in", class: "btn btn-outline-info" %>
   </div>
   <br>
   <div class="form-group"><%= link_to "アカウント登録はこちらから", new_user_path %></div>
