@@ -1,7 +1,7 @@
 <div class="container">
-  <h2>この内容で投稿しますか？</h2>
-  <div class="form">
+  <h3>この内容で投稿しますか？</h3>
     <%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
+    　<div class="inner">
       <div class="form-group">
         <%= form.hidden_field :content %>
         <%= form.hidden_field :image_cache %>
@@ -16,6 +16,8 @@
         <%= form.submit '投稿', class: "btn btn-outline-info" %>
       </div>
     <% end %>
-    <%= link_to '戻る', :back %>
+    <div class="back">
+      <%= link_to '戻る', :back %>
+    </div>
   </div>
 </div>

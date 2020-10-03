@@ -61,4 +61,12 @@ class FeedsController < ApplicationController
   def feed_params
     params.require(:feed).permit(:image, :image_cache, :content)
   end
+
+  def ensure_correct_user
+    @feed = Feed.find_by(id:params[:id])
+    if @feed.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to("/feeds")
+    end
+  end
 end

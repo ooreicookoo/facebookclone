@@ -28,13 +28,20 @@
    background-color: #1877F2;
  }
 
+a.navbar-brand {
+  padding-left: 0px;
+}
+
  #body-inside {
    width: 100%;
    position:relative;
    min-height: 100%;
  }
-image.mb-4 {
-  padding-bottom: 10px;
+img.mb-4 {
+  padding-top: 0px;
+  padding-bottom: 17px;
+  padding-left: 13px;
+  padding-right: 23px;
 }
 
 footer.footer {

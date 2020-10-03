@@ -1,9 +1,9 @@
-.navbar {
-  position: relative;
-  min-height: 50px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-}
+// .navbar {
+//   position: relative;
+//   min-height: 50px;
+//   margin-bottom: 20px;
+//   border: 1px solid transparent;
+// }
 
 
 header {
@@ -30,4 +30,13 @@ header ul:after {
   content: "";
   display: block;
   clear: both;
+}
+
+.back {
+  text-align: center;
+}
+
+.inner{
+    display: table-cell;
+    vertical-align: middle;
 }
