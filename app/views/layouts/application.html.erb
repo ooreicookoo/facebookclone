@@ -1,66 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>fictive book</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <div id="body-inside">
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
+    <head>
+      <title>fictive book</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <meta name="viewport" content="width=device-width">
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+
+    <body>
       <div class="container">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <% if logged_in? %>
     <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/feeds"><img class="mb-4" src="/assets/fb0929.jpg" alt="" width="176" height="34"></a>
-    </div>
-      <ul class="nav navbar-nav">
-        <li><%= link_to '新規投稿', '/feeds/new'%></li>
-        <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
-        <li><%= link_to "投稿一覧", '/feeds'%></li>
-        <li><%= link_to "Profile", user_path(current_user.id) %></li>
-      </ul>
-    </div>
-</nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/feeds"><img class="mb-4" src="/assets/fb0929.jpg" alt="" width="176" height="34"></a>
+      </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to '新規投稿', '/feeds/new'%></li>
+          <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+          <li><%= link_to "投稿一覧", '/feeds'%></li>
+          <li><%= link_to "Profile", user_path(current_user.id) %></li>
+        </ul>
 
     <% else %>
-    <br>
-     <div class="Sign up">
-       <%= link_to "■ Sign up", new_user_path %>
-     </div>
-     <div class="Login">
-       <%= link_to "■ Login", new_session_path %>
-     </div>
+      <br>
+       <div class="Sign up">
+         <%= link_to "■ Sign up", new_user_path %>
+       </div>
+       <div class="Login">
+         <%= link_to "■ Login", new_session_path %>
+       </div>
     <% end %>
+    </nav>
     <%= yield %>
-    <footer class="footer">
-         <p>© 2020 R.enomoto</p>
+    <body>
+    <footer>
+         <p>&copy; 2020 R.enomoto</p>
      </footer>
-  </body>
+     </div>
 </html>

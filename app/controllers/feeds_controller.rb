@@ -1,5 +1,5 @@
 class FeedsController < ApplicationController
-  before_action :select_feed, only: [:show, :update, :destroy]
+  before_action :select_feed, only: [:show, :update, :destroy, :edit]
   before_action :authenticate_with_http_digest, only: [:new, :confirm, :create, :edit, :update, :destroy]
 
   def index

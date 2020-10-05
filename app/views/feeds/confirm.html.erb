@@ -1,23 +1,22 @@
-<div class="container">
-  <h3>この内容で投稿しますか？</h3>
+<br>
+<h3>この内容で投稿しますか？</h3><br>
+  <div class="container">
     <%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
-    　<div class="">
-      <div class="">
-        <%= form.hidden_field :content %>
-        <%= form.hidden_field :image_cache %>
-        <%= form.label :content, 'コメント:', class: "control-label" %>
-        <p><%= @feed.content %></p>
-      </div>
-      <div class="">
-        <%= form.label :image, '写真:', class: "control-label" %>
-        <%= image_tag @feed.image.url if @feed.image?%>
-      </div>
+    　<div class="box">
+        <div class="form-group">
+          <%= form.hidden_field :content %>
+          <%= form.hidden_field :image_cache %>
+          <%= form.label :content, 'コメント:', class: "control-label" %>
+          <p><%= @feed.content %></p>
+        </div>
+        <div class="form-group">
+          <%= form.label :image, '写真:', class: "control-label" %>
+          <br>
+          <%= image_tag @feed.image.url if @feed.image?%>
+        </div>
       <div class="sign_up_btn">
         <%= form.submit '投稿', class: "btn btn-outline-info" %>
       </div>
-    <% end %>
-    <div class="back">
-      <%= link_to '戻る', :back %>
+        <% end %>
+        <%= link_to '戻る', :back %>
     </div>
-  </div>
-</div>
