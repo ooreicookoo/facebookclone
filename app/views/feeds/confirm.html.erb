@@ -1,8 +1,7 @@
 <br>
 <h3>この内容で投稿しますか？</h3><br>
-  <div class="container">
+  <div class="contents">
     <%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
-    　<div class="box">
         <div class="form-group">
           <%= form.hidden_field :content %>
           <%= form.hidden_field :image_cache %>
@@ -17,6 +16,6 @@
       <div class="sign_up_btn">
         <%= form.submit '投稿', class: "btn btn-outline-info" %>
       </div>
-        <% end %>
         <%= link_to '戻る', :back %>
+    <% end %>
     </div>
