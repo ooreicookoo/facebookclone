@@ -17,7 +17,7 @@
       <% if logged_in? %>
     <nav class="navbar navbar-default">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/feeds"><img class="mb-4" src="/assets/fb0929.jpg" alt="" width="176" height="34"></a>
+        <a class="navbar-brand" href="/feeds"><img class="mb-4" src="public/assets/fb0929.jpg" alt="" width="176" height="34"></a>
       </div>
         <ul class="nav navbar-nav">
           <li><%= link_to '新規投稿', '/feeds/new'%></li>
@@ -37,7 +37,6 @@
     <% end %>
     </nav>
     <%= yield %>
-    <body>
     <footer>
          <p>&copy; 2020 R.enomoto</p>
      </footer>
