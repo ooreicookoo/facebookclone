@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
       root 'feeds#top'
       resources :sessions, only: [:new, :create, :destroy]
-      resources :users, only: [:new, :create, :show, :efid, :update]
-      resources :blogs 
+      resources :users, only: [:new, :create, :show, :edit, :update]
       resources :feeds do
         collection do
-        post :confirm
-      end
-      member do
-        patch :confirm
-      end
+          post :confirm
+        end
+        member do
+          patch :confirm
+        end
     end
   end
