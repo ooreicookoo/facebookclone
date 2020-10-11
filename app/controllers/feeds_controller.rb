@@ -15,13 +15,17 @@ class FeedsController < ApplicationController
   end
 
   def new
-    @feed = current_user.feeds.build
+    if params[:back]
+      @feed = Feed.new(feed_params)
+    else
+      @feed = Feed.new
+    end
   end
 
   def confirm
     @feed = current_user.feeds.build(feed_params)
     if @feed.invalid?
-      flash.now[:danger] = 'エラー！内容が未記入です'
+      flash.now[:danger] = 'エラーがあります'
       render :new
     end
   end
