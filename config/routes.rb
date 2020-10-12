@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :users, only: [:new, :create, :show, :edit, :update]
       resources :feeds do
         collection do
+          patch :confirm
           post :confirm
         end
         member do
